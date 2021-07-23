@@ -1567,3 +1567,9 @@ a.move-top span {
 }
 
 /*--//responsive--*/
+
+/* */
+.img-fluid {
+    height: 400px;
+    width: auto;
+}
