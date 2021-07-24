@@ -86,7 +86,7 @@ class MovieAdmin(admin.ModelAdmin):
             messege_bit = '1 запись обновлена'
         else:
             messege_bit = f'{row_update} запесей обновлено'
-            
+
         self.message_user(request, f'{messege_bit}')
 
     def publish(self, request, queryset):
@@ -101,10 +101,10 @@ class MovieAdmin(admin.ModelAdmin):
         self.message_user(request, f'{messege_bit}')
 
     publish.short_description = 'Опубликовать'
-    publish.allowed_permission = ('change', )
+    publish.allowed_permission = ('change',)
 
     unpublish.short_description = 'Снять с публикации'
-    unpublish.allowed_permission = ('change', )
+    unpublish.allowed_permission = ('change',)
 
     get_image.short_description = 'Постер'
 
@@ -133,7 +133,7 @@ class ActorAdmin(admin.ModelAdmin):
 
 @admin.register(Rating)
 class RatingAdmin(admin.ModelAdmin):
-    list_display = ('movie', 'star', 'ip')
+    list_display = ('star', 'movie', 'ip')
 
 
 @admin.register(MovieShots)
