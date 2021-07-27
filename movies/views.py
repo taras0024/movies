@@ -95,6 +95,7 @@ class FilterMoviesView(GenreYear, ListView):
         context['genre'] = ''.join([f'year={x}&' for x in self.request.GET.getlist('genre')])
         return context
 
+
 class JsonFilterMoviesView(ListView):
     '''Фильтр фильомв в json'''
 
@@ -132,3 +133,18 @@ class AddStarRating(View):
             return HttpResponse(status=201)
         else:
             return HttpResponse(status=400)
+
+
+class Search(ListView):
+    '''Поиск фильма'''
+
+    paginate_by = 2
+    template_name = 'movies/movies.html'
+
+    def get_queryset(self):
+        return Movie.objects.filter(title__icontains=self.request.GET.get('q'))
+
+    def get_context_data(self, *args, **kwargs):
+        context = super().get_context_data(*args, **kwargs)
+        context['q'] = f'q={self.request.GET.get("q")}&'
+        return context
